@@ -1,0 +1,54 @@
+#profile potados
+
+#macro add_test(a, b)
+    add reg[0], reg[a], reg[a] // 2
+    add reg[0], reg[a], reg[b] // 0
+    add reg[0], reg[b], reg[a] // 0
+    add reg[0], reg[b], reg[b] // -2
+
+    sub reg[0], reg[a], reg[a] // 0
+    sub reg[0], reg[a], reg[b] // 2
+    sub reg[0], reg[b], reg[a] // -2
+    sub reg[0], reg[b], reg[b] // 0
+#endmacro
+
+// ADD / SUB test
+.CORE0
+    mov reg[1], 1     
+    mov reg[2], 0xFFFF
+    add_test(1, 2)
+    
+    mov reg[3], 1
+    mov reg[4], 0xFFFF
+    add_test(3, 4)
+
+    mov reg[5], 1
+    mov reg[6], 0xFFFF
+    add_test(5, 6)
+
+    mov reg[9], 1
+    mov reg[10], 0xFFFF
+    add_test(9, 10)
+
+    mov reg[11], 1
+    mov reg[12], 0xFFFF
+    add_test(11, 12)
+
+    mov reg[13], 1
+    mov reg[14], 0xFFFF
+    add_test(13, 14)
+
+    mov reg[1], 1
+    mov reg[14], 0xFFFF
+    add_test(1, 14)
+
+    mov reg[2], 1
+    mov reg[13], 0xFFFF
+    add_test(2, 13)
+
+    mov reg[3], 1
+    mov reg[12], 0xFFFF
+    add_test(3, 12)
+
+END:
+    jmp END

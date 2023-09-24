@@ -1,0 +1,10 @@
+#profile potados
+
+// fibonacci sequence
+
+.CORE0 
+    mov reg[1], 1
+    mov reg[2], 10
+HERE:
+    jne reg[1]++, reg[2], HERE 
+    int 0

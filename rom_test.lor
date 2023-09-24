@@ -1,0 +1,126 @@
+#profile potados
+
+#macro add_32() 
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+#endmacro
+
+
+// ROM Test
+// fill ROM with add commands, 1022 adds
+.CORE0
+    mov reg[1], 0 // add: 0
+    
+    add_32()  
+    add_32()
+    add_32()
+    add_32() // + 128 (128)
+
+    add_32()  
+    add_32()
+    add_32()
+    add_32() // + 128 (256)
+
+    add_32()  
+    add_32()
+    add_32()
+    add_32() // + 128 (384)
+
+    add_32()  
+    add_32()
+    add_32()
+    add_32() // + 128 (512)
+
+
+    add_32()  
+    add_32()
+    add_32()
+    add_32() 
+
+    add_32()  
+    add_32()
+    add_32()
+    add_32() 
+
+    add_32()  
+    add_32()
+    add_32()
+    add_32() 
+
+    add_32()  
+    add_32()
+    add_32()
+    
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+    add reg[1], 1
+END:
+    jmp END // end program
+    // int 0
+#debug regs
+
+    // total 1022 adds.
+    // expected: 1        0b0000001111111110 0x03fe 1022
