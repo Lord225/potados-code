@@ -1,4 +1,10 @@
 #profile potados
 
 .CORE0
-    int 0
+    mov reg[1], 1
+    mov reg[2], 2
+    
+    // add reg[3], reg[1], -128
+    
+    mov ram[reg[1]+4], reg[2]
+    mov reg[2], ram[reg[1]+4]

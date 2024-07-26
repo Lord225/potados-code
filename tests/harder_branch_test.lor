@@ -1,0 +1,37 @@
+#profile potados
+
+.CORE0 
+
+
+// #define A
+#define B
+#ifdef A
+    mov reg[1], 0
+    mov reg[2], 1
+SKIP:
+    je reg[1], reg[2], SKIP // should not jump 
+    jne reg[1], reg[2], SKIP // should jump 
+#endif
+
+
+#ifdef B
+    mov reg[1], 1
+    mov reg[2], 1
+SKIP:
+    jne reg[1], reg[2], SKIP // should not jump
+    je reg[1], reg[2], SKIP // should jump 
+#endif
+
+
+#ifdef C
+    jge REGL, REGR, SKIP // should jump 
+#endif
+
+
+#ifdef D
+    jge REGL, REGR, SKIP // should jump 
+#endif
+
+    int 0
+
+

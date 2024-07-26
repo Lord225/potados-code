@@ -1,0 +1,88 @@
+#profile potados
+
+
+.CORE0 
+    mov reg[1], 0
+    mov reg[2], 1
+    mov reg[3], 2 
+    mov reg[4], 0
+
+// jne
+    jne reg[1], reg[2], SKIP // should jump 
+    add reg[4], 10
+SKIP:
+    jne reg[1], reg[1], SKIP2 // should not jump
+    jmp SKIP3
+SKIP2:
+    add reg[4], 10
+SKIP3:
+
+// je
+    je reg[1], reg[1], SKIP4 // should jump
+    add reg[4], 10
+SKIP4:
+    je reg[1], reg[2], SKIP5 // should not jump
+    jmp SKIP6
+SKIP5:
+    add reg[4], 10
+SKIP6:
+    jg reg[2], reg[1], SKIP7 // should jump
+    add reg[4], 10
+SKIP7:
+    jg reg[1], reg[2], SKIP8 // should not jump
+    jmp SKIP9
+SKIP8:
+    add reg[4], 10
+SKIP9: 
+    jge reg[1], reg[1], SKIP10 // should jump
+    add reg[4], 10
+SKIP10:
+    jge reg[1], reg[2], SKIP11 // should not jump
+    jmp SKIP12
+SKIP11:
+    add reg[4], 10
+SKIP12:
+    
+    jle reg[1], reg[1], SKIP16 // should jump
+    add reg[4], 10
+SKIP16:
+    jle reg[2], reg[1], SKIP17 // should not jump
+    jmp SKIP18
+SKIP17:
+    add reg[4], 10
+SKIP18:
+
+// ja
+    ja reg[2], reg[1], SKIP19 // should jump
+    add reg[4], 10
+SKIP19:
+    ja reg[1], reg[2], SKIP20 // should not jump
+    jmp SKIP21
+SKIP20:
+    add reg[4], 10
+SKIP21:
+
+// jae
+    jae reg[2], reg[1], SKIP22 // should jump
+    add reg[4], 10
+SKIP22:
+    jae reg[1], reg[2], SKIP23 // should not jump
+    jmp SKIP24
+SKIP23:
+    add reg[4], 10
+SKIP24:
+
+// jb
+    jb reg[1], reg[2], SKIP25 // should jump
+    add reg[4], 10
+SKIP25:
+    jb reg[2], reg[1], SKIP26 // should not jump
+    jmp SKIP27
+SKIP26:
+    add reg[4], 10
+SKIP27:
+
+    mov reg[1], 0
+    mov reg[1], 0
+    add reg[4], 0
+    nop

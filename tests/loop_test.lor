@@ -1,14 +1,19 @@
 #profile potados
 
+
+
 .CORE0 
     mov reg[1], 10
     mov reg[2], 0
-HERE:
-    jne reg[1]--, reg[2], HERE
-    
-    mov reg[1], 0
-    mov reg[2], 10
-HERE2:
-    jne reg[1]++, reg[2], HERE2
-    
+// HERE:
+//     jne reg[1]--, reg[2], HERE
+//     
+//     mov reg[1], 0
+//     mov reg[2], 10
+// HERE2:
+//     jne reg[1]++, reg[2], HERE2
+
+    HERE:
+        jge reg[1]--, reg[2], HERE
+
     int 0
